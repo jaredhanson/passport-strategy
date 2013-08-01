@@ -14,7 +14,7 @@ API.
 
 ## Usage
 
-This module exports a abstract `Strategy` class that is intended to be
+This module exports an abstract `Strategy` class that is intended to be
 subclassed when implementing concrete authentication strategies.  Once
 implemented, such strategies can be used by applications that utilize Passport
 middleware for authentication.
