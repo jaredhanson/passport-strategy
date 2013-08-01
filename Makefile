@@ -16,7 +16,7 @@ include support/mk/mocha.mk
 # ==============================================================================
 # Browserify
 # ==============================================================================
-BROWSERIFY_MAIN = ./index.js
+BROWSERIFY_MAIN = ./lib/index.js
 
 include support/mk/browserify.mk
 include support/mk/testling.mk
