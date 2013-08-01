@@ -1,4 +1,4 @@
-SOURCES = *.js
+SOURCES = lib/*.js
 TESTS = test/*.test.js
 
 lint: lint-jshint
