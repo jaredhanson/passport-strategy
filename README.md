@@ -45,6 +45,10 @@ CustomStrategy.prototype.authenticate = function(req, options) {
 }
 ```
 
+## Related Modules
+
+- [chai-passport-strategy](https://github.com/jaredhanson/chai-passport-strategy) — helpers for testing strategies with the Chai assertion library
+
 ## Tests
 
     $ npm install
