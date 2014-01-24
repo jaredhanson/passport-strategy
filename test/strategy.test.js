@@ -1,3 +1,5 @@
+/* global describe, it, expect */
+
 var Strategy = require('../lib/strategy');
 
 describe('Strategy', function() {
@@ -6,7 +8,7 @@ describe('Strategy', function() {
     
   it('authenticate should throw error', function() {
     expect(function() {
-      strategy.authenticate()
+      strategy.authenticate();
     }).to.throw(Error, 'Strategy#authenticate must be overridden by subclass');
   });
   
