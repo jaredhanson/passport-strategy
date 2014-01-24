@@ -6,17 +6,17 @@
     "passport",
     "strategy"
   ],
+  "author": {
+    "name": "Jared Hanson",
+    "email": "jaredhanson@gmail.com",
+    "url": "http://www.jaredhanson.net/"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/jaredhanson/passport-strategy.git"
   },
   "bugs": {
     "url": "http://github.com/jaredhanson/passport-strategy/issues"
-  },
-  "author": {
-    "name": "Jared Hanson",
-    "email": "jaredhanson@gmail.com",
-    "url": "http://www.jaredhanson.net/"
   },
   "licenses": [
     {
@@ -36,15 +36,5 @@
   },
   "scripts": {
     "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"
-  },
-  "testling": {
-    "browsers": [
-      "chrome/latest"
-    ],
-    "harness" : "mocha",
-    "files": [
-      "test/bootstrap/testling.js",
-      "test/*.test.js"
-    ]
   }
 }
