@@ -2,6 +2,7 @@
 
 [![Build](https://travis-ci.org/jaredhanson/passport-strategy.png)](http://travis-ci.org/jaredhanson/passport-strategy)
 [![Coverage](https://coveralls.io/repos/jaredhanson/passport-strategy/badge.png)](https://coveralls.io/r/jaredhanson/passport-strategy)
+[![Quality](https://codeclimate.com/github/jaredhanson/passport-strategy.png)](https://codeclimate.com/github/jaredhanson/passport-strategy)
 [![Dependencies](https://david-dm.org/jaredhanson/passport-strategy.png)](http://david-dm.org/jaredhanson/passport-strategy)
 
 
@@ -62,4 +63,4 @@ CustomStrategy.prototype.authenticate = function(req, options) {
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2013 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2014 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
