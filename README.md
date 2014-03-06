@@ -1,9 +1,10 @@
 # passport-strategy
 
-[![Build](https://travis-ci.org/jaredhanson/passport-strategy.png)](http://travis-ci.org/jaredhanson/passport-strategy)
+[![Build](https://travis-ci.org/jaredhanson/passport-strategy.png)](https://travis-ci.org/jaredhanson/passport-strategy)
 [![Coverage](https://coveralls.io/repos/jaredhanson/passport-strategy/badge.png)](https://coveralls.io/r/jaredhanson/passport-strategy)
 [![Quality](https://codeclimate.com/github/jaredhanson/passport-strategy.png)](https://codeclimate.com/github/jaredhanson/passport-strategy)
-[![Dependencies](https://david-dm.org/jaredhanson/passport-strategy.png)](http://david-dm.org/jaredhanson/passport-strategy)
+[![Dependencies](https://david-dm.org/jaredhanson/passport-strategy.png)](https://david-dm.org/jaredhanson/passport-strategy)
+[![Tips](http://img.shields.io/gittip/jaredhanson.png)](https://www.gittip.com/jaredhanson/)
 
 
 An abstract class implementing [Passport](http://passportjs.org/)'s strategy
