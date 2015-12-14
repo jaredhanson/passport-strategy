@@ -55,8 +55,8 @@ util.inherits(CustomStrategy, Strategy);
 ```
 
 Later, when a user calls `passport.authenticate` to acquire
-the authentication middleware, the value of this `name` attribute
-is what must be passed in as the first argument:
+the authentication middleware that employs this strategy, the value
+of this `name` attribute is what must be passed in as the first argument:
 
 ```javascript
 var authMiddleware = passport.authenticate('custom');
