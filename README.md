@@ -21,7 +21,7 @@ subclassed when implementing concrete authentication strategies.  Once
 implemented, such strategies can be used by applications that utilize Passport
 middleware for authentication.
 
-#### Subclass Strategy
+### Subclass Strategy
 
 Create a new `CustomStrategy` constructor which inherits from `Strategy`:
 
@@ -36,7 +36,33 @@ function CustomStrategy(...) {
 util.inherits(CustomStrategy, Strategy);
 ```
 
-#### Implement Authentication
+#### Set instance attributes
+
+Passport will identify mounted strategies by the instance's `name` attribute, 
+so be sure to set one in the constructor:
+
+```javascript
+var util = require('util')
+  , Strategy = require('passport-strategy');
+
+function CustomStrategy(...) {
+  Strategy.call(this);
+
+  this.name = 'custom'; // set instance name
+}
+
+util.inherits(CustomStrategy, Strategy);
+```
+
+Later, when a user calls `passport.authenticate` to acquire
+the authentication middleware, the value of this `name` attribute 
+is what must be passed in as the first argument:
+
+```javascript
+var authMiddleware = passport.authenticate('custom');
+```
+
+### Implement Authentication
 
 Implement `autheticate()`, performing the necessary operations required by the
 authentication scheme or protocol being implemented.
