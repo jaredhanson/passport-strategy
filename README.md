@@ -38,7 +38,7 @@ util.inherits(CustomStrategy, Strategy);
 
 #### Set instance attributes
 
-Passport will identify mounted strategies by the instance's `name` attribute, 
+Passport will identify mounted strategies by the instance's `name` attribute,
 so be sure to set one in the constructor:
 
 ```javascript
@@ -55,7 +55,7 @@ util.inherits(CustomStrategy, Strategy);
 ```
 
 Later, when a user calls `passport.authenticate` to acquire
-the authentication middleware, the value of this `name` attribute 
+the authentication middleware, the value of this `name` attribute
 is what must be passed in as the first argument:
 
 ```javascript
@@ -64,12 +64,46 @@ var authMiddleware = passport.authenticate('custom');
 
 ### Implement Authentication
 
-Implement `autheticate()`, performing the necessary operations required by the
+Implement the `authenticate` method, performing the necessary operations required by the
 authentication scheme or protocol being implemented.
 
 ```javascript
 CustomStrategy.prototype.authenticate = function(req, options) {
   // TODO: authenticate request
+}
+```
+
+Upon mounting a strategy instance on passport, it will be augmented with several methods.
+These methods are essential to writing a working `authenticate` method:
+
+* `error(err)`, indicates to passport that an error occurred in authenticating the request.
+* `fail()`, indicates to passport that the request failed authentication.
+* `success(userObj)`, indicates to passport that the request was successfully authenticated and provides the user object with which to associate the new authenticated session.
+
+Since the strategy instance is augmented with these methods, they can be accessed as
+properties of `this` within the `authenticate` method.
+
+#### Examples
+
+```javascript
+AlwaysSucceedStrategy.prototype.authenticate = function(req, options) {
+    this.success({
+        username : 'bogus',
+        userId : NaN
+    });
+}
+```
+
+```javascript
+AlwaysFailStrategy.prototype.authenticate = function(req, options) {
+    this.fail();
+}
+```
+
+```javascript
+AlwaysErrorStrategy.prototype.authenticate = function(req, options) {
+    var err = new Error("Strategy: working as intended")
+    this.error(err);
 }
 ```
 
