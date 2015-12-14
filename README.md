@@ -107,6 +107,19 @@ AlwaysErrorStrategy.prototype.authenticate = function(req, options) {
 }
 ```
 
+```javascript
+CoinFlipStrategy.prototype.authenticate = function(req, options) {
+    if(Math.random() < .5) {
+        this.success({
+            username : "George Washington",
+            userId : 25
+        });
+    } else {
+        this.fail();
+    }
+}
+```
+
 ## Related Modules
 
 - [chai-passport-strategy](https://github.com/jaredhanson/chai-passport-strategy) — helpers for testing strategies with the Chai assertion library
