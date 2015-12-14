@@ -109,7 +109,7 @@ AlwaysErrorStrategy.prototype.authenticate = function(req, options) {
 
 ```javascript
 CoinFlipStrategy.prototype.authenticate = function(req, options) {
-    if(Math.random() < .5) {
+    if(Math.random() < 0.5) {
         this.success({
             username : "George Washington",
             userId : 25
