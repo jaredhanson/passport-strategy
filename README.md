@@ -77,7 +77,7 @@ Upon mounting a strategy instance on passport, it will be augmented with several
 These methods are essential to writing a working `authenticate` method:
 
 * `error(err)`, indicates to passport that an error occurred in authenticating the request.
-* `fail()`, indicates to passport that the request failed authentication.
+* `fail(options, statusCode)`, indicates to passport that the request failed authentication.
 * `success(userObj)`, indicates to passport that the request was successfully authenticated and provides the user object with which to associate the new authenticated session.
 
 Since the strategy instance is augmented with these methods, they can be accessed as
@@ -96,7 +96,9 @@ AlwaysSucceedStrategy.prototype.authenticate = function(req, options) {
 
 ```javascript
 AlwaysFailStrategy.prototype.authenticate = function(req, options) {
-    this.fail();
+    this.fail({
+        message : "working as intended"
+    }, 200);
 }
 ```
 
