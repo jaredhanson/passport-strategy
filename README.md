@@ -21,7 +21,7 @@ subclassed when implementing concrete authentication strategies.  Once
 implemented, such strategies can be used by applications that utilize Passport
 middleware for authentication.
 
-#### Subclass Strategy
+### Subclass Strategy
 
 Create a new `CustomStrategy` constructor which inherits from `Strategy`:
 
@@ -36,14 +36,89 @@ function CustomStrategy(...) {
 util.inherits(CustomStrategy, Strategy);
 ```
 
-#### Implement Authentication
+#### Set instance attributes
 
-Implement `autheticate()`, performing the necessary operations required by the
+Passport will identify mounted strategies by the instance's `name` attribute,
+so be sure to set one in the constructor:
+
+```javascript
+var util = require('util')
+  , Strategy = require('passport-strategy');
+
+function CustomStrategy(...) {
+  Strategy.call(this);
+
+  this.name = 'custom'; // set instance name
+}
+
+util.inherits(CustomStrategy, Strategy);
+```
+
+Later, when a user calls `passport.authenticate` to acquire
+the authentication middleware that employs this strategy, the value
+of this `name` attribute is what must be passed in as the first argument:
+
+```javascript
+var authMiddleware = passport.authenticate('custom');
+```
+
+### Implement Authentication
+
+Implement the `authenticate` method, performing the necessary operations required by the
 authentication scheme or protocol being implemented.
 
 ```javascript
 CustomStrategy.prototype.authenticate = function(req, options) {
   // TODO: authenticate request
+}
+```
+
+Upon mounting a strategy instance on passport, it will be augmented with several methods.
+These methods are essential to writing a working `authenticate` method:
+
+* `error(err)`, indicates to passport that an error occurred in authenticating the request.
+* `fail(options, statusCode)`, indicates to passport that the request failed authentication.
+* `success(userObj)`, indicates to passport that the request was successfully authenticated and provides the user object with which to associate the new authenticated session.
+
+Since the strategy instance is augmented with these methods, they can be accessed as
+properties of `this` within the `authenticate` method.
+
+#### Examples
+
+```javascript
+AlwaysSucceedStrategy.prototype.authenticate = function(req, options) {
+    this.success({
+        username : 'bogus',
+        userId : NaN
+    });
+}
+```
+
+```javascript
+AlwaysFailStrategy.prototype.authenticate = function(req, options) {
+    this.fail({
+        message : "working as intended"
+    }, 200);
+}
+```
+
+```javascript
+AlwaysErrorStrategy.prototype.authenticate = function(req, options) {
+    var err = new Error("Strategy: working as intended")
+    this.error(err);
+}
+```
+
+```javascript
+CoinFlipStrategy.prototype.authenticate = function(req, options) {
+    if(Math.random() < 0.5) {
+        this.success({
+            username : "George Washington",
+            userId : 25
+        });
+    } else {
+        this.fail();
+    }
 }
 ```
 
