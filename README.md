@@ -54,11 +54,11 @@ The end goal of the strategy is to invoke *one* of these action methods, in
 order to indicate successful or failed authentication, redirect to a
 third-party identity provider, etc.
 
-* [.success(user, info)](#Strategy+success)
-* [.fail(challenge, status)](#Strategy+fail)
-* [.redirect(url, status)](#Strategy+redirect)
-* [.pass()](#Strategy+pass)
-* [.error(err)](#Strategy+error)
+* [.success(user, info)](#strategysuccessuser-info)
+* [.fail(challenge, status)](#strategyfailchallenge-status)
+* [.redirect(url, status)](#strategyredirecturl-status)
+* [.pass()](#strategypass)
+* [.error(err)](#strategyerrorerr)
 
 
 ##### strategy.success(user, info)
@@ -71,7 +71,7 @@ optional argument containing additional user information.  This is
 useful for third-party authentication strategies to pass profile
 details.
 
-**Kind**: instance method of [Strategy](#Strategy)  
+**Kind**: instance method of [Strategy](#subclass-strategy)  
 **Api**: public  
 
 | Param | Type |
@@ -86,7 +86,7 @@ to 401.
 
 Strategies should call this function to fail an authentication attempt.
 
-**Kind**: instance method of [Strategy](#Strategy)  
+**Kind**: instance method of [Strategy](#subclass-strategy)  
 **Api**: public  
 
 | Param | Type |
@@ -102,7 +102,7 @@ Redirect to `url` with optional `status`, defaulting to 302.
 Strategies should call this function to redirect the user (via their
 user agent) to a third-party website for authentication.
 
-**Kind**: instance method of [Strategy](#Strategy)  
+**Kind**: instance method of [Strategy](#subclass-strategy)  
 **Api**: public  
 
 | Param | Type |
@@ -118,7 +118,7 @@ Under most circumstances, Strategies should not need to call this
 function.  It exists primarily to allow previous authentication state
 to be restored, for example from an HTTP session.
 
-**Kind**: instance method of [Strategy](#Strategy)  
+**Kind**: instance method of [Strategy](#subclass-strategy)  
 **Api**: public  
 
 ##### strategy.error(err)
@@ -128,7 +128,7 @@ Strategies should call this function when an internal error occurs
 during the process of performing authentication; for example, if the
 user directory is not available.
 
-**Kind**: instance method of [Strategy](#Strategy)  
+**Kind**: instance method of [Strategy](#subclass-strategy)  
 **Api**: public  
 
 | Param | Type |
